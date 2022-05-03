@@ -130,7 +130,7 @@ class StructureLib:
         return if_element_flag
 
 # The class method to calcuate the ringinfo 
-class ringLib:
+class RingLib:
     def __init__(self, smi):
         self.smi = smi
         self.mol = Chem.MolFromSmiles(self.smi)
@@ -273,7 +273,7 @@ class ringLib:
         return max(self.bridged_site_count())
 
 # The class method to calculate sideChain info
-class sideChainLib:
+class SideChainLib:
     def __init__(self, smi) -> None:
         self.smi = smi
         self.mol = Chem.MolFromSmiles(self.smi)
@@ -364,7 +364,7 @@ class FilterCP:
 
     def calc_ring(self):
         self._msg_print("** Step 4 ** Calculate Ring info")
-        rings = ringLib(self.smi)
+        rings = RingLib(self.smi)
         print(rings.ring_system_count())
         print(rings.largest_ring_system_size())
         print(rings.largest_spiro_site_count())
@@ -381,7 +381,7 @@ class FilterCP:
 
     def calc_side_chain(self):
         self._msg_print("** Step 5 ** Calculate Max atom number of side chain")
-        side_chain = sideChainLib(self.smi)
+        side_chain = SideChainLib(self.smi)
 
         print(side_chain.get_side_chain_max_num())
 
